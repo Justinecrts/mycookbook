@@ -1,17 +1,35 @@
-<h2><%= @recipe.name %></h2>
-<%= link_to "Modifier cette recette", edit_recipe_path(@recipe) %>
-<%= link_to "Retournez à la liste des recettes", recipes_path %>
-<h4>Ingrédients</h4>
-<% @recipe.doses.each do |dose|%>
-  <%= dose.description %> of <%= dose.ingredient.name %>
-  <%= link_to recipe_dose_path(@recipe, dose), method: :delete, data: { confirm: "Are you sure?" } do %>
-  <i class="fa fa-trash"></i>
-  <% end %>
-<% end %>
-<h4>Ajouter un ingrédient</h4>
-<%= simple_form_for [@recipe, @dose] do |f| %>
-  <%= f.error_notification %>
-  <%= f.input :description, placeholder: "Ex. 6 pommes"%>
-  <%= f.association :ingredient, prompt: "Select an ingredient" %>
-  <%= f.submit "Ajouter un ingrédient", class: "btn btn-default" %>
-<% end %>
+<div class="wrapper">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <h2 class="text-center"><%= @recipe.name %></h2>
+        <%= @recipe.preparation %>
+        <h4>Ingrédients</h4>
+        <% @recipe.doses.each do |dose|%>
+          <%= dose.description %> of <%= dose.ingredient.name %>
+          <%= link_to recipe_dose_path(@recipe, dose), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fa fa-trash"></i>
+          <% end %>
+        <% end %>
+        <h4>Ajouter un ingrédient</h4>
+        <%= simple_form_for [@recipe, @dose] do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :description, placeholder: "Ex. 6 pommes"%>
+          <%= f.association :ingredient, prompt: "Select an ingredient" %>
+          <%= f.submit "Ajouter un ingrédient", class: "btn btn-default" %>
+        <% end %>
+        <h4>Noter cette recette</h4>
+        <%= simple_form_for [@recipe] do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :rating ,collection: [0, 1, 2, 3, 4, 5], prompt: "Select a rating" %>
+          <%= f.submit "Noter", class: "btn btn-default" %>
+        <% end %>
+        <%= link_to "Modifier cette recette", edit_recipe_path(@recipe) %>
+        <%= link_to "Retournez à la liste des recettes", recipes_path %>
+    </div>
+  </div>
+</div>
+</div>
+
+
+

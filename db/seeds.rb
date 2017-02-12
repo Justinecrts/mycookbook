@@ -21,8 +21,8 @@ end
 Recipe.destroy_all
 
 page = 1
-while page < 15
-  html_file = open("http://www.epicurious.com/tools/searchresults?search=poulet&pageNumber=#{page}")
+while page < 3
+  html_file = open("http://www.epicurious.com/tools/searchresults?search=chocolat&pageNumber=#{page}")
   html_doc = Nokogiri::HTML(html_file)
   recipes = html_doc.search('.sr_rows')
   recipes.each do |recipe|

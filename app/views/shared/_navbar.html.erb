@@ -1,4 +1,4 @@
-<div class="navbar-wagon">
+<div class="navbar-wagon navbar-wagon-fixed ">
   <!-- Logo -->
   <a href="/" class="navbar-wagon-brand">
     <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRo_bvA6NrGb-CV29HuvsmSCREpTNs1K8CxKfhJ5dWP2OWZQrU9"/>
@@ -6,40 +6,6 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
-
-    <!-- Text link -->
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Contact</a>
-
-    <!-- Text link -->
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Team</a>
-
-    <!-- Notification link-->
-    <a href="" class="navbar-wagon-item navbar-wagon-link">
-      <div class="badge-container">
-        <i class="fa fa-envelope-o"></i>
-        <div class="badge badge-blue">3</div>
-      </div>
-    </a>
-
-    <!-- Profile picture and dropdown -->
-    <div class="navbar-wagon-item">
-      <div class="dropdown">
-        <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log Out</a></li>
-        </ul>
-      </div>
-    </div>
 
     <!-- Button (call-to-action) -->
     <%= link_to "Ajouter une recette", new_recipe_path, class: "navbar-wagon-item navbar-wagon-button btn"%>

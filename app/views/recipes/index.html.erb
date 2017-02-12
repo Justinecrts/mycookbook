@@ -1,7 +1,37 @@
-<h2>Toutes les recettes</h2>
-<% @recipes.each do |recipe| %>
-<h2><%= recipe.name %> </h2>
-<%= link_to "Allez voir cette recette", recipe_path(recipe) %>
-<%= link_to "Supprimer cette recette", recipe_path(recipe), method: :delete, data: { confirm: "Confirmez la suppression de #{recipe.name}?" } %>
-<% end %>
+<div class="wrapper">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <h2 class="text-center">Toutes les recettes</h2>
+      <% @recipes.each do |recipe| %>
+          <div class="product">
+          <%= link_to recipe_path(recipe) do %>
+            <img src="https://image.flaticon.com/icons/png/512/13/13338.png" alt="kudoz" class="product-image  hidden-xs link-unstyled">
+            <div class='product-body link-unstyled'>
+              <h2><%= recipe.name %> </h2>
+              <p><%= recipe.preparation %></p>
+            </div>
+          <% end %>
+            <ul class="list-inline product-controls product-controls-hidden hidden-sm hidden-xs">
+              <li>
+                <%= link_to recipe_path(recipe) do %>
+                  <i class="fa fa-eye""></i>
+                <% end %>
+              </li>
+              <li><a href=""><i class="fa fa-star"></i></a></li>
+              <li>
+              <%= link_to recipe_path(recipe), method: :delete, data: { confirm: "Confirmez la
+              suppression de #{recipe.name}?" } do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+
 
