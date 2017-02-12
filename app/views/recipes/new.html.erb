@@ -1,0 +1,6 @@
+<h2>Ajouter une recette</h2>
+<%= simple_form_for @recipe do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, placeholder: "Ex. Tajine de poulet"%>
+  <%= f.submit "Ajouter ma recette", class: "btn btn-default" %>
+<% end %>

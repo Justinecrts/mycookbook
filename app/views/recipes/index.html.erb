@@ -1,4 +1,7 @@
 <h2>Toutes les recettes</h2>
 <% @recipes.each do |recipe| %>
 <h2><%= recipe.name %> </h2>
+<%= link_to "Allez voir cette recette", recipe_path(recipe) %>
+<%= link_to "Supprimer cette recette", recipe_path(recipe), method: :delete, data: { confirm: "Confirmez la suppression de #{recipe.name}?" } %>
 <% end %>
+
