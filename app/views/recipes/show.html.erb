@@ -1,4 +1,17 @@
 <h2><%= @recipe.name %></h2>
 <%= link_to "Modifier cette recette", edit_recipe_path(@recipe) %>
 <%= link_to "Retournez à la liste des recettes", recipes_path %>
-
+<h4>Ingrédients</h4>
+<% @recipe.doses.each do |dose|%>
+  <%= dose.description %> of <%= dose.ingredient.name %>
+  <%= link_to recipe_dose_path(@recipe, dose), method: :delete, data: { confirm: "Are you sure?" } do %>
+  <i class="fa fa-trash"></i>
+  <% end %>
+<% end %>
+<h4>Ajouter un ingrédient</h4>
+<%= simple_form_for [@recipe, @dose] do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :description, placeholder: "Ex. 6 pommes"%>
+  <%= f.association :ingredient, prompt: "Select an ingredient" %>
+  <%= f.submit "Ajouter un ingrédient", class: "btn btn-default" %>
+<% end %>

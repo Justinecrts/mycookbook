@@ -10,6 +10,16 @@ require 'open-uri'
 require 'rest-client'
 require 'nokogiri'
 
+Ingredient.destroy_all
+
+response = RestClient.get "http://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
+repos = JSON.parse(response)
+repos["drinks"].each do |element|
+  Ingredient.create(name: element["strIngredient1"])
+end
+
+Recipe.destroy_all
+
 page = 1
 while page < 15
   html_file = open("http://www.epicurious.com/tools/searchresults?search=poulet&pageNumber=#{page}")
@@ -21,3 +31,8 @@ while page < 15
   end
 page += 1
 end
+
+
+
+
+
